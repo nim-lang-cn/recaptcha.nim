@@ -3,15 +3,15 @@
 import asyncdispatch, httpclient, json
 
 const
-  VerifyUrl: string = "https://www.google.com/recaptcha/api/siteverify"
-  CaptchaScript: string = r"""<script src="https://www.google.com/recaptcha/api.js" async defer></script>"""
+  VerifyUrl: string = "https://recaptcha.net/recaptcha/api/siteverify"
+  CaptchaScript: string = r"""<script src="https://recaptcha.net/recaptcha/api.js" async defer></script>"""
   CaptchaElementStart: string = r"""<div class="g-recaptcha" data-sitekey=""""
   CaptchaElementEnd: string = r""""></div>"""
   NoScriptElementStart: string = r"""<noscript>
   <div>
     <div style="width: 302px; height: 422px; position: relative;">
       <div style="width: 302px; height: 422px; position: absolute;">
-        <iframe src="https://www.google.com/recaptcha/api/fallback?k="""
+        <iframe src="https://recaptcha.net/recaptcha/api/fallback?k="""
   NoScriptElementEnd: string = r"""" frameborder="0" scrolling="no"
                 style="width: 302px; height:422px; border-style: none;">
         </iframe>
@@ -43,7 +43,7 @@ type
 proc initReCaptcha*(secret, siteKey: string): ReCaptcha =
   ## Initialise a ReCaptcha instance with the given secret key and site key.
   ##
-  ## The secret key and site key can be generated at https://www.google.com/recaptcha/admin
+  ## The secret key and site key can be generated at https://recaptcha.net/recaptcha/admin
   result = ReCaptcha(
     secret: secret,
     siteKey: siteKey
